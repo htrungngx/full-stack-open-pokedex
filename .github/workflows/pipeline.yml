@@ -16,11 +16,18 @@ jobs:
       - name: Install dependencies 
         run: npm install  
       - name: lint
-        run: npm run eslint --fix
+        run: npm run eslint
       - name: build
         run: npm run build
       - name: install things
         run: npm install jest-environment-jsdom --save-dev
       - name: test
-        run: npm tes
+        run: npm test
+
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:5000
       

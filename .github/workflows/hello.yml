@@ -13,5 +13,8 @@ jobs:
         run: |
           echo "Hello World!"
         
-        run: date -d
+      - name: Print current date in UTC
+        run: date -u
+        
+      - name: List files in long format
         run: ls -l
